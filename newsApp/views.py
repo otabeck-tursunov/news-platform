@@ -1,5 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import TemplateView
+
 from .models import Category, News
+from .forms import ContactForm
 
 
 def news_list(request):
@@ -28,8 +32,31 @@ def homePageView(request):
     return render(request, 'news/index.html', context)
 
 
-def contactPageView(request):
-    context = {
+# def contactPageView(request):
+#     form = ContactForm(request.POST or None)
+#     if request.method == 'POST' and form.is_valid():
+#         form.save()
+#         return redirect('contact-page')
+#     context = {
+#         'form': form
+#     }
+#     return render(request, 'news/contact.html', context)
 
-    }
-    return render(request, 'news/contact.html', context)
+class ContactPageView(TemplateView):
+    template_name = 'news/contact.html'
+    def get(self, request, *args, **kwargs):
+        form = ContactForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'news/contact.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = ContactForm(request.POST)
+        if request.method == 'POST' and form.is_valid():
+            form.save()
+            return redirect('contact-page')
+        context = {
+            'form': form
+        }
+        return render(request, 'news/contact.html', context)

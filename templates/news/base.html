@@ -32,9 +32,9 @@
                 <div class="header_top">
                     <div class="header_top_left">
                         <ul class="top_nav">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{% url 'home-page' %}">Home</a></li>
                             <li><a href="#">About</a></li>
-                            <li><a href="pages/contact.html">Contact</a></li>
+                            <li><a href="{% url 'contact-page' %}">Contact</a></li>
                         </ul>
                     </div>
                     <div class="header_top_right">
@@ -64,7 +64,7 @@
             </div>
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="nav navbar-nav main_nav">
-                    <li class="active"><a href="index.html"><span class="fa fa-home desktop-home"></span><span
+                    <li class="active"><a href="{% url 'home-page' %}"><span class="fa fa-home desktop-home"></span><span
                             class="mobile-show">Home</span></a></li>
                     <li><a href="#">Technology</a></li>
                     <li class="dropdown"><a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
@@ -80,7 +80,7 @@
                     </li>
                     <li><a href="#">Laptops</a></li>
                     <li><a href="#">Tablets</a></li>
-                    <li><a href="pages/contact.html">Contact Us</a></li>
+                    <li><a href="{% url 'contact-page' %}">Contact Us</a></li>
                     <li><a href="pages/404.html">404 Page</a></li>
                 </ul>
             </div>
