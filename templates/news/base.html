@@ -2,7 +2,8 @@
 {% load static %}
 <html>
 <head>
-    <title>News</title>
+    {% block title %}
+    {% endblock title %}
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -38,7 +39,7 @@
                         </ul>
                     </div>
                     <div class="header_top_right">
-                        <p>Friday, December 05, 2045</p>
+                        <p>{{ now_time }}</p>
                     </div>
                 </div>
             </div>
