@@ -25,6 +25,8 @@ SECRET_KEY = 'django-insecure-ttv8)=f!u%orv*m2(sh#9908ildio#smrs)2_oo7x49@-hxs8p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+handler404 = 'newsApp.views.handler404'
+
 ALLOWED_HOSTS = []
 
 

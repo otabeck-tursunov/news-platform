@@ -14,5 +14,6 @@ class NewsAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class Category(admin.ModelAdmin):
     list_display = ['name',]
+    prepopulated_fields = {"slug": ("name", )}
 
 admin.site.register(Contact)

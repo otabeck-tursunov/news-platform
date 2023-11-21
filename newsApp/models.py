@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.utils import timezone
 from django.db import models
 
@@ -9,9 +10,13 @@ class PublishManager(models.Manager):
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('category-news', args=[self.slug])
 
 
 class News(models.Model):
@@ -43,6 +48,9 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("news-detail", args=[self.slug])
 
 
 class Contact(models.Model):

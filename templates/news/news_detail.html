@@ -1,14 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>News details</title>
-</head>
-<body>
-<h1>
-    {{ news.title }}
-</h1>
-<p>Published date: {{ news.publish_time }}</p>
-<p>{{ news.body | linebreaks }}</p>
-</body>
-</html>
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %}
+<title>{{ news.title }}</title>
+{% endblock title %}
+{% block content %}
+<div class="fashion_technology_area">
+    <!--    <div class="fashion">-->
+    <div class="single_post_content">
+        <h2>
+            <a href="{{ category.get_absolute.url }}">
+                <span>{{ news.title }} | {{ now_time }}</span>
+            </a>
+        </h2>
+        <ul class="business_catgnav wow fadeInDown">
+            <li style="margin-bottom: 40px;">
+                <figure class="bsbig_fig">
+                    <a class="featured_img" href="{{ news.get_absolute_url }}" style="margin-bottom: 40px;">
+                        <img alt="" src="{{ news.image.url }}">
+                        <span class="overlay"></span>
+                    </a>
+                    <figcaption>
+                        <a href="{{ news.get_absolute_url }}">
+                            {{ news.title }}
+                        </a>
+                    </figcaption>
+                    <p>
+                        {{ news.body | linebreaks }}
+                    </p>
+                </figure>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="card-footer text-center">
+    <a href="{% url 'news-update' news.slug %}">
+        <button class="btn btn-info ml-2" type="submit">Tahrirlash</button>
+    </a>
+    <a href="{% url 'news-delete' news.slug %}">
+        <button class="btn btn-danger ml-2" type="submit">O'chrish</button>
+    </a>
+</div>
+{% endblock content %}

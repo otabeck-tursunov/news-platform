@@ -33,9 +33,9 @@
                 <div class="header_top">
                     <div class="header_top_left">
                         <ul class="top_nav">
-                            <li><a href="{% url 'home-page' %}">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="{% url 'contact-page' %}">Contact</a></li>
+                            <li><a href="{% url 'home-page' %}">Bosh sahifa</a></li>
+                            <li><a href="{% url 'about-page' %}">Biz haqimizda</a></li>
+                            <li><a href="{% url 'contact-page' %}">Aloqa</a></li>
                         </ul>
                     </div>
                     <div class="header_top_right">
@@ -45,10 +45,15 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="header_bottom">
-                    <div class="logo_area"><a class="logo" href="index.html"><img alt=""
-                                                                                  src="{% static 'images/logo.jpg' %}"></a>
+                    <div class="logo_area">
+                        <a class="logo" href="{% url 'home-page' %}">
+                            <img alt="" src="{% static 'images/logo_xabar_uz.jpg' %}">
+                        </a>
                     </div>
-                    <div class="add_banner"><a href="#"><img alt="" src="{% static 'images/addbanner_728x90_V1.jpg' %}"></a>
+                    <div class="add_banner">
+                        <a href="https://themeforest.net/">
+                            <img alt="" src="{% static 'images/addbanner_728x90_V1.jpg' %}">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -68,22 +73,27 @@
                     <li class="active"><a href="{% url 'home-page' %}"><span
                             class="fa fa-home desktop-home"></span><span
                             class="mobile-show">Home</span></a></li>
-                    <li><a href="#">Technology</a></li>
-                    <li class="dropdown"><a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
-                                            href="#"
-                                            role="button">Mobile</a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Android</a></li>
-                            <li><a href="#">Samsung</a></li>
-                            <li><a href="#">Nokia</a></li>
-                            <li><a href="#">Walton Mobile</a></li>
-                            <li><a href="#">Sympony</a></li>
-                        </ul>
+                    {% for category in top_categories %}
+                    <li>
+                        <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
                     </li>
-                    <li><a href="#">Laptops</a></li>
-                    <li><a href="#">Tablets</a></li>
-                    <li><a href="{% url 'contact-page' %}">Contact Us</a></li>
-                    <li><a href="pages/404.html">404 Page</a></li>
+                    {% endfor %}
+                    <!--                    <li class="dropdown">-->
+                    <!--                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">-->
+                    <!--                            Mobile-->
+                    <!--                        </a>-->
+                    <!--                        <ul class="dropdown-menu" role="menu">-->
+                    <!--                            <li><a href="#">Android</a></li>-->
+                    <!--                            <li><a href="#">Samsung</a></li>-->
+                    <!--                            <li><a href="#">Nokia</a></li>-->
+                    <!--                            <li><a href="#">Walton Mobile</a></li>-->
+                    <!--                            <li><a href="#">Sympony</a></li>-->
+                    <!--                        </ul>-->
+                    <!--                    </li>-->
+                    <!--                    <li><a href="#">Laptops</a></li>-->
+                    <!--                    <li><a href="#">Tablets</a></li>-->
+                    <li><a href="{% url 'contact-page' %}">Aloqa</a></li>
+                    <li><a href="{% url 'handler404' %}">404</a></li>
                 </ul>
             </div>
         </nav>
@@ -91,11 +101,11 @@
     <section id="newsSection">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <div class="latest_newsarea"><span>Latest News</span>
+                <div class="latest_newsarea">
                     <ul class="news_sticker" id="ticker01">
                         {% for news in latest_news %}
                         <li>
-                            <a href="#"><img alt="" src="{{ news.image.url }}">
+                            <a href="{{ news.get_absolute_url }}"><img alt="" src="{{ news.image.url }}">
                                 {{ news.title }}
                             </a>
                         </li>
@@ -103,14 +113,10 @@
                     </ul>
                     <div class="social_area">
                         <ul class="social_nav">
-                            <li class="facebook"><a href="#"></a></li>
-                            <li class="twitter"><a href="#"></a></li>
-                            <li class="flickr"><a href="#"></a></li>
-                            <li class="pinterest"><a href="#"></a></li>
-                            <li class="googleplus"><a href="#"></a></li>
-                            <li class="vimeo"><a href="#"></a></li>
-                            <li class="youtube"><a href="#"></a></li>
-                            <li class="mail"><a href="#"></a></li>
+                            <li class="facebook"><a href="https://www.facebook.com"></a></li>
+                            <li class="twitter"><a href="https://www.twitter.com"></a></li>
+                            <li class="youtube"><a href="https://www.youtube.com"></a></li>
+                            <li class="mail"><a href="https://www.mail.com"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -128,39 +134,53 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="footer_widget wow fadeInLeftBig">
-                        <h2>Flickr Images</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <div class="footer_widget wow fadeInDown">
-                        <h2>Tag</h2>
+                        <h2>Teglar</h2>
                         <ul class="tag_nav">
-                            <li><a href="#">Games</a></li>
-                            <li><a href="#">Sports</a></li>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Life &amp; Style</a></li>
-                            <li><a href="#">Technology</a></li>
-                            <li><a href="#">Photo</a></li>
-                            <li><a href="#">Slider</a></li>
+                            {% for category in top_categories %}
+                            <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+                            {% endfor %}
+                            <li>
+                                <a href="{% url 'contact-page' %}">Aloqa</a>
+                            </li>
+                            <li>
+                                <a href="#">Biz haqimizda!</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="footer_widget wow fadeInDown">
+                        <h2>Biz haqimizda</h2>
+                        <p>
+                            «Xabar.uz» axborot-tahliliy portali 2017-yilning 27-dekabrida elektron OAV sifatida davlat
+                            ro‘yxatidan o‘tkazilgan. Guvohnoma raqami: 156697. Muassis: «Xabar» gazetasi tahririyati.
+                            Mas’ul muharrir Abdug‘ani Abdurahmonov. Elektron manzil: info@xabar.uz
+                            Materiallarimizdan to‘liq yoki qisman foydalanilganda «Foydalanish shartlari»ga amal
+                            qilinishi shart. Barcha huquqlar O‘zbekiston Respublikasining ommaviy axborot vositalari
+                            to‘g‘risidagi hamda mualliflik va turdosh huquqlar to‘g‘risidagi qonun hujjatlarida
+                            belgilangan tartibda himoyalangan.
+                        </p>
+                    </div>
+                </div>
+<!--                <div class="col-lg-4 col-md-4 col-sm-4">-->
+<!--                    <div class="footer_widget wow fadeInRightBig">-->
+
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="footer_widget wow fadeInRightBig">
-                        <h2>Contact</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h2>Manzil</h2>
                         <address>
-                            Perfect News,1238 S . 123 St.Suite 25 Town City 3333,USA Phone: 123-326-789 Fax: 123-546-567
+                            Tahririyat manzili: 100000, Toshkent shahri, Amir Temur 1-tor ko‘chasi, 2-uy (mo‘ljal: Oloy
+                            bozori)
                         </address>
                     </div>
                 </div>
             </div>
         </div>
         <div class="footer_bottom">
-            <p class="copyright">Copyright &copy; 2045 <a href="index.html">NewsFeed</a></p>
-            <p class="developer">Developed By Wpfreeware</p>
+            <p class="copyright">Copyright &copy; 2023 <a href="{% url 'home-page' %}">Xabar.uz</a></p>
+            <p class="developer">Developed By <a href="https://github.com/otabeck-tursunov">Otabek Tursunov</a></p>
         </div>
     </footer>
 </div>

@@ -1,0 +1,82 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %}
+<title>{{ category.name }}</title>
+{% endblock title%}
+{% block content %}
+
+<div class="fashion_technology_area" >
+<!--    <div class="fashion">-->
+        <div class="single_post_content">
+            <h2>
+                <a href="{{ category.get_absolute.url }}">
+                    <span>{{ category.name }} xabarlari</span>
+                </a>
+            </h2>
+            <ul class="business_catgnav wow fadeInDown">
+                {% for news in category_news %}
+                <li style="margin-bottom: 40px;">
+                    <figure class="bsbig_fig"><a class="featured_img"
+                                                 href="{{ news.get_absolute_url }}">
+                        <img alt="" src="{{ news.image.url }}"> <span
+                            class="overlay"></span>
+                    </a>
+                        <figcaption>
+                            <a href="{{ news.get_absolute_url }}">
+                                {{ news.title }}
+                            </a>
+                        </figcaption>
+                        <p>
+                            {{ news.body | truncatewords:40 }}
+                        </p>
+                    </figure>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+<!--    </div>-->
+<!--    <div class="technology">-->
+<!--        <div class="single_post_content">-->
+<!--            <h2><span>{{ category.name }}</span></h2>-->
+<!--            <ul class="business_catgnav">-->
+<!--                {% for news in foreign_news %}-->
+<!--                {% if news == foreign_news.0 %}-->
+<!--                <li>-->
+<!--                    <figure class="bsbig_fig wow fadeInDown">-->
+<!--                        <a class="featured_img" href="{{ news.get_absolute_url }}">-->
+<!--                            <img alt="" src="{{ news.image.url }}">-->
+<!--                            <span class="overlay"></span>-->
+<!--                        </a>-->
+<!--                        <figcaption>-->
+<!--                            <a href="{{ news.get_absolute_url }}">-->
+<!--                                {{ news.title | truncatewords:5 }}-->
+<!--                            </a>-->
+<!--                        </figcaption>-->
+<!--                        <p>-->
+<!--                            {{ news.title }}-->
+<!--                        </p>-->
+<!--                    </figure>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <ul class="spost_nav">-->
+<!--                {% else %}-->
+<!--                <li>-->
+<!--                    <div class="media wow fadeInDown">-->
+<!--                        <a class="media-left" href="{{ news.get_absolute_url }}">-->
+<!--                            <img alt="" src="{{ news.image.url }}">-->
+<!--                        </a>-->
+<!--                        <div class="media-body">-->
+<!--                            <a class="catg_title" href="{{ news.get_absolute_url }}">-->
+<!--                                {{ news.title }}-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                {% endif %}-->
+<!--                {% endfor %}-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
+
+{% endblock content%}
